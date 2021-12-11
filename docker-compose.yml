@@ -1,0 +1,30 @@
+version: "3.3"
+
+services:
+  database_challenge_08:
+    image: postgres
+    container_name: database_challenge_08
+    restart: always
+    ports:
+      - 5432:5432
+      - 9229:9229
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=fin_api
+    volumes:
+      - pgdata:/data/postgres
+  # app:
+  #   build: .
+  #   container_name: challenge_08
+  #   ports:
+  #     - 3335:3333
+  #   volumes:
+  #     - .:/usr/app
+  #   links:
+  #     - database_challenge_08
+  #   depends_on:
+  #     - database_challenge_08
+volumes:
+  pgdata:
+    driver: local
